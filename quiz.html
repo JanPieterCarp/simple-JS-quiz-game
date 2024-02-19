@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EO-Jan-pieter-Front-end3</title>
+</head>
+<body>
+<script>
+
+const landen=["Italy", "Luxembourg", "Belgium", "Denmark", "Finland", "France", "Slovakia", "Slovenia", "Germany", "Greece", "Ireland", "Netherlands","Portugal", "Spain", "Sweden", "United Kingdom", "Cyprus","Lithuania", "Czech Republic", "Estonia", "Hungary", "Austria", "Poland"]
+const hoofdsteden=["Rome", "Luxembourg", "Brussels", "Copenhagen", "Helsinki", "Paris", "Bratislava","Ljubljana", "Berlin", "Athens", "Dublin", "Amsterdam", "Lisbon", "Madrid", "Stockholm", "London", "Nicosia", "Vilnius", "Prague", "Tallin", "Budapest", "Vienna", "Warsaw"]
+
+if ("rondes" in sessionStorage) {
+} else {
+    sessionStorage.setItem("rondes", 0);
+}
+if ("scores" in sessionStorage) {
+} else {
+    sessionStorage.setItem("scores", 0);
+}
+
+let rondes = sessionStorage.getItem("rondes");
+let scores = sessionStorage.getItem("scores");
+let hoofdstedenStr = "";
+let userInput = prompt("hoeveel rondes wil je spelen?");
+
+for (let z = 0; z <= hoofdsteden.length +1; z++) {
+    hoofdstedenStr += hoofdsteden[z] + "\n";
+}
+
+for (v=1; v<=userInput ; v++){
+    random = Math.floor(Math.random() * landen.length);
+    let hoofdstadInput = prompt(landen[random] + ": vul hier onderin de bij behorende hoofdstad in \n" +hoofdstedenStr);
+    c = hoofdsteden.indexOf(hoofdstadInput);
+    lijst()
+}
+
+function lijst(){
+if(random==c) {
+    alert("Dat is goed!");
+    scores++;
+} 
+else {
+    alert("Sorry, dat is fout!");
+}
+rondes++;      
+}
+    alert("Tootaal aantal rondes gespeeld: " + rondes + "\n Tootaal aantal vragen goed: " + scores);
+            sessionStorage.setItem("scores", scores);
+            sessionStorage.setItem("rondes", rondes);
+</script>
+</body>
+</html>
